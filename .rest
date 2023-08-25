@@ -1,0 +1,8 @@
+### 01. Login
+POST {{$dotenv ROOT_DIR}}/api/login.php HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "johndoe"
+}
