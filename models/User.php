@@ -18,7 +18,7 @@ class User
 
   public function readById()
   {
-    $query = "SELECT * FROM `$this->tableName` WHERE `id` = :id;";
+    $query = "SELECT `id`, `username` FROM `$this->tableName` WHERE `id` = :id;";
 
     $stmt = $this->conn->prepare($query);
 
@@ -31,7 +31,7 @@ class User
 
   public function readByUsername()
   {
-    $query = "SELECT * FROM `$this->tableName` WHERE `username` = :username;";
+    $query = "SELECT `id`, `username` FROM `$this->tableName` WHERE `username` = :username;";
 
     $stmt = $this->conn->prepare($query);
 
