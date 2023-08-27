@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2023 at 06:16 AM
+-- Generation Time: Aug 27, 2023 at 08:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -108,7 +108,14 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(3, 2, 12, '2023-08-26 04:16:08', '2023-08-26 04:16:08');
+(33, 2, 14, '2023-08-26 06:24:53', '2023-08-26 06:24:53'),
+(34, 2, 21, '2023-08-26 06:25:02', '2023-08-26 06:25:02'),
+(35, 2, 20, '2023-08-26 06:25:03', '2023-08-26 06:25:03'),
+(53, 3, 12, '2023-08-27 17:43:41', '2023-08-27 17:43:41'),
+(54, 3, 13, '2023-08-27 17:43:41', '2023-08-27 17:43:41'),
+(55, 3, 14, '2023-08-27 17:43:42', '2023-08-27 17:43:42'),
+(56, 3, 15, '2023-08-27 17:43:43', '2023-08-27 17:43:43'),
+(57, 2, 12, '2023-08-27 17:51:39', '2023-08-27 17:51:39');
 
 --
 -- Indexes for dumped tables
@@ -152,7 +159,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -170,7 +177,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- Constraints for dumped tables
