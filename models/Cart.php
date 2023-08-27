@@ -33,7 +33,7 @@ class Cart
 
   public function readById()
   {
-    $query = "SELECT `id`, `user_id`, `product_id`, `quantity` FROM `$this->tableName` WHERE `id` = :id;";
+    $query = "SELECT `c`.`id`, `c`.`product_id`, `p`.`name`, `p`.`price`, `p`.`image`, `c`.`quantity` FROM `$this->tableName` `c` JOIN `products` `p` ON `c`.`product_id` = `p`.`id` WHERE `c`.`id` = :id;";
 
     $stmt = $this->conn->prepare($query);
 
