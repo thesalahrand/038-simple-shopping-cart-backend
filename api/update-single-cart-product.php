@@ -30,16 +30,19 @@ $cart->productId = $product->id;
 $cart->userId = $user->id;
 
 $singleCartItem = $cart->readByUserAndProduct();
+$actualOperationType;
 
 switch ($reqData['type']) {
   case 'increase':
     if (!$singleCartItem) {
       $cart->quantity = 1;
       $singleCartItem = $cart->create();
+      $actualOperationType = 'created';
     } else {
       $cart->id = $singleCartItem['id'];
       $cart->quantity = $singleCartItem['quantity'] + 1;
       $singleCartItem = $cart->updateQuantity();
+      $actualOperationType = 'updated';
     }
 
     break;
@@ -54,13 +57,18 @@ switch ($reqData['type']) {
     if ($singleCartItem['quantity'] > 1) {
       $cart->quantity = $singleCartItem['quantity'] - 1;
       $singleCartItem = $cart->updateQuantity();
+      $actualOperationType = 'updated';
     } else {
       $singleCartItem = $cart->delete();
+      $actualOperationType = 'deleted';
     }
 
     break;
 }
 
 http_response_code(200);
-echo json_encode($singleCartItem);
+echo json_encode([
+  'actualOperationType' => $actualOperationType,
+  'singleCartItem' => $singleCartItem
+]);
 ?>
