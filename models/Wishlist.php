@@ -19,7 +19,7 @@ class Wishlist
 
   public function read()
   {
-    $query = "SELECT `p`.`id`, `p`.`name`, `p`.`price`, `p`.`image` FROM `$this->tableName` `w` JOIN `products` `p` ON `w`.`product_id` = `p`.`id` WHERE `w`.`user_id` = :userId;";
+    $query = "SELECT `p`.`id`, `p`.`name`, `p`.`price`, `p`.`image` FROM `$this->tableName` `w` JOIN `products` `p` ON `w`.`product_id` = `p`.`id` WHERE `w`.`user_id` = :userId ORDER BY `w`.`updated_at` DESC;";
 
     $stmt = $this->conn->prepare($query);
 
