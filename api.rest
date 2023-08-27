@@ -34,7 +34,7 @@ Accept: application/json
 Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
 
 {
-  "productId": "14",
+  "productId": "13",
   "type": "increase"
 }
 
