@@ -20,7 +20,7 @@ class Cart
 
   public function read()
   {
-    $query = "SELECT `p`.`id`, `p`.`name`, `p`.`price`, `p`.`image`, `c`.`quantity` FROM `$this->tableName` `c` JOIN `products` `p` ON `c`.`product_id` = `p`.`id` WHERE `c`.`user_id` = :userId;";
+    $query = "SELECT `p`.`id`, `p`.`name`, `p`.`price`, `p`.`image`, `c`.`quantity` FROM `$this->tableName` `c` JOIN `products` `p` ON `c`.`product_id` = `p`.`id` WHERE `c`.`user_id` = :userId ORDER BY `c`.`updated_at` DESC;";
 
     $stmt = $this->conn->prepare($query);
 

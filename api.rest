@@ -34,6 +34,11 @@ Accept: application/json
 Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
 
 {
-  "productId": "12",
-  "type": "decrease"
+  "productId": "14",
+  "type": "increase"
 }
+
+### 06. Read all Cart Products
+GET {{$dotenv ROOT_DIR}}/api/read-all-cart-products.php HTTP/1.1
+Accept: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
