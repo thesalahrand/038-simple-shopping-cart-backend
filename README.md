@@ -1,3 +1,5 @@
-This app implements some basic functionalities such as user authentication by email only, managing your product wishlist and shopping cart.
+First, copy `.env.example` file into `.env` file. Fill `ROOT_DIR`, `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_NAME` and `JWT_SECRET_KEY` with the values you have set.
 
-This repository is split into `frontend` and `backend` branches which contain their respective code.
+Then, simply run `composer install` and you're good to go.
+
+You can use `api.rest` to get a clear idea about the API documentation.

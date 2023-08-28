@@ -10,23 +10,23 @@ Accept: application/json
 ### 02. Read Products
 GET {{$dotenv ROOT_DIR}}/api/read-products.php HTTP/1.1
 Accept: application/json
-Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQifQ.3ppEnFacBrxIHqz6_zvF8QVUqkPn7A4AvnUnDnk19eo
 
 ### 03. Create Wishlist Item
 POST {{$dotenv ROOT_DIR}}/api/create-wishlist-item.php HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQifQ.3ppEnFacBrxIHqz6_zvF8QVUqkPn7A4AvnUnDnk19eo
 
 {
-  "productId": "13"
+  "productId": "12"
 }
 
 ### 04. Delete Wishlist Item
 POST {{$dotenv ROOT_DIR}}/api/delete-wishlist-item.php HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQifQ.3ppEnFacBrxIHqz6_zvF8QVUqkPn7A4AvnUnDnk19eo
 
 {
   "productId": "13"
@@ -35,30 +35,30 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V
 ### 05. Read Wishlist Items
 GET {{$dotenv ROOT_DIR}}/api/read-wishlist-items.php HTTP/1.1
 Accept: application/json
-Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQifQ.3ppEnFacBrxIHqz6_zvF8QVUqkPn7A4AvnUnDnk19eo
 
 ### 06. Manage Cart Item
 POST {{$dotenv ROOT_DIR}}/api/manage-cart-item.php HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQifQ.3ppEnFacBrxIHqz6_zvF8QVUqkPn7A4AvnUnDnk19eo
 
 {
-  "productId": "12",
+  "productId": "14",
   "type": "increase"
 }
 
 ### 07. Read Cart Items
 GET {{$dotenv ROOT_DIR}}/api/read-cart-items.php HTTP/1.1
 Accept: application/json
-Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQifQ.3ppEnFacBrxIHqz6_zvF8QVUqkPn7A4AvnUnDnk19eo
 
 ### 08. Delete Cart Item
 POST {{$dotenv ROOT_DIR}}/api/delete-cart-item.php HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQifQ.3ppEnFacBrxIHqz6_zvF8QVUqkPn7A4AvnUnDnk19eo
 
 {
-  "productId": "13"
+  "productId": "12"
 }
