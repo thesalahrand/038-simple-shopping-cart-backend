@@ -18,6 +18,17 @@ class Product
     $this->conn = $db;
   }
 
+  public function read()
+  {
+    $query = "SELECT `id`, `name`, `price`, `image` FROM `$this->tableName`;";
+
+    $stmt = $this->conn->prepare($query);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+  }
+
   public function readById()
   {
     $query = "SELECT * FROM `$this->tableName` WHERE `id` = :id;";
@@ -29,19 +40,6 @@ class Product
     $stmt->execute();
 
     return $stmt->fetch(\PDO::FETCH_ASSOC);
-  }
-
-  public function read($userId)
-  {
-    $query = "SELECT `p`.`id`, `p`.`name`, `p`.`price`, `p`.`image`, (SELECT COUNT(*) FROM `wishlist` `w` WHERE `w`.`product_id` = `p`.`id` AND `w`.`user_id` = :userId) AS `added_to_cart` FROM `$this->tableName` `p`;";
-
-    $stmt = $this->conn->prepare($query);
-
-    $stmt->bindParam(':userId', $userId);
-
-    $stmt->execute();
-
-    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
   }
 }
 ?>

@@ -21,9 +21,9 @@ $user = new User($db);
 $product = new Product($db);
 
 require __DIR__ . '/validations/is-logged-in.validation.php';
-require __DIR__ . '/validations/read-all-products.validation.php';
+require __DIR__ . '/validations/read-products.validation.php';
 
-$allProducts = $product->read($authUser['id']);
+$allProducts = $product->read($user->id);
 
 http_response_code(200);
 echo json_encode($allProducts);

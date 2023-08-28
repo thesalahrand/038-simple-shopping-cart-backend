@@ -7,8 +7,8 @@ Accept: application/json
   "username": "johndoe"
 }
 
-### 02. Get all Products
-GET {{$dotenv ROOT_DIR}}/api/read-all-products.php HTTP/1.1
+### 02. Read Products
+GET {{$dotenv ROOT_DIR}}/api/read-products.php HTTP/1.1
 Accept: application/json
 Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
 
@@ -32,7 +32,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V
   "productId": "13"
 }
 
-### 05. Read all Wishlist Items
+### 05. Read Wishlist Items
 GET {{$dotenv ROOT_DIR}}/api/read-wishlist-items.php HTTP/1.1
 Accept: application/json
 Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
