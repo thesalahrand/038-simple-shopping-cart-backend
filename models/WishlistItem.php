@@ -1,10 +1,10 @@
 <?php
 namespace App\models;
 
-class Wishlist
+class WishlistItem
 {
   private $conn;
-  private $tableName = 'wishlist';
+  private $tableName = 'wishlist_items';
 
   public $id;
   public $userId;
@@ -19,7 +19,7 @@ class Wishlist
 
   public function read()
   {
-    $query = "SELECT `w`.`id`, `w`.`product_id`, `p`.`name`, `p`.`price`, `p`.`image` FROM `$this->tableName` `w` JOIN `products` `p` ON `w`.`product_id` = `p`.`id` WHERE `w`.`user_id` = :userId ORDER BY `w`.`updated_at` DESC;";
+    $query = "SELECT `w`.`id` AS `wishlist_item_id`, `w`.`product_id`, `p`.`name` AS `product_name`, `p`.`price` AS `product_price`, `p`.`image` AS `product_image` FROM `$this->tableName` `w` JOIN `products` `p` ON `w`.`product_id` = `p`.`id` WHERE `w`.`user_id` = :userId ORDER BY `w`.`updated_at` DESC;";
 
     $stmt = $this->conn->prepare($query);
 
@@ -32,7 +32,7 @@ class Wishlist
 
   public function readById()
   {
-    $query = "SELECT `id`, `user_id`, `product_id` FROM `$this->tableName` WHERE `id` = :id;";
+    $query = "SELECT `w`.`id` AS `wishlist_item_id`, `w`.`product_id`, `p`.`name` AS `product_name`, `p`.`price` AS `product_price`, `p`.`image` AS `product_image` FROM `$this->tableName` `w` JOIN `products` `p` ON `w`.`product_id` = `p`.`id` WHERE `w`.`id` = :id;";
 
     $stmt = $this->conn->prepare($query);
 
@@ -45,7 +45,7 @@ class Wishlist
 
   public function readByUserAndProduct()
   {
-    $query = "SELECT `id`, `user_id`, `product_id` FROM `$this->tableName` WHERE `user_id` = :userId AND `product_id` = :productId;";
+    $query = "SELECT `w`.`id` AS `wishlist_item_id`, `w`.`product_id`, `p`.`name` AS `product_name`, `p`.`price` AS `product_price`, `p`.`image` AS `product_image` FROM `$this->tableName` `w` JOIN `products` `p` ON `w`.`product_id` = `p`.`id` WHERE `user_id` = :userId AND `product_id` = :productId;";
 
     $stmt = $this->conn->prepare($query);
 
