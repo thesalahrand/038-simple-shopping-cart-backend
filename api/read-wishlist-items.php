@@ -21,7 +21,7 @@ $user = new User($db);
 $wishlistItem = new WishlistItem($db);
 
 require __DIR__ . '/validations/is-logged-in.validation.php';
-require __DIR__ . '/validations/read-all-wishlist-products.validation.php';
+require __DIR__ . '/validations/read-wishlist-items.validation.php';
 
 $wishlistItem->userId = $user->id;
 $allWishlistItems = $wishlistItem->read();

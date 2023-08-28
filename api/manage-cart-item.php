@@ -12,7 +12,7 @@ use App\Config\Config;
 use App\Config\Database;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\Cart;
+use App\Models\CartItem;
 
 Config::init();
 $database = new Database();
@@ -20,28 +20,27 @@ $db = $database->connect();
 
 $user = new User($db);
 $product = new Product($db);
-$cart = new Cart($db);
+$cartItem = new CartItem($db);
 
 $reqData = json_decode(file_get_contents('php://input'), true);
 require __DIR__ . '/validations/is-logged-in.validation.php';
-require __DIR__ . '/validations/update-single-cart-product.validation.php';
+require __DIR__ . '/validations/manage-cart-item.validation.php';
 
-$cart->productId = $product->id;
-$cart->userId = $user->id;
+$cartItem->productId = $product->id;
+$cartItem->userId = $user->id;
 
-$singleCartItem = $cart->readByUserAndProduct();
+$singleCartItem = $cartItem->readByUserAndProduct();
 $actualOperationType;
 
 switch ($reqData['type']) {
   case 'increase':
     if (!$singleCartItem) {
-      $cart->quantity = 1;
-      $singleCartItem = $cart->create();
+      $singleCartItem = $cartItem->create();
       $actualOperationType = 'created';
     } else {
-      $cart->id = $singleCartItem['id'];
-      $cart->quantity = $singleCartItem['quantity'] + 1;
-      $singleCartItem = $cart->updateQuantity();
+      $cartItem->id = $singleCartItem['cart_item_id'];
+      $cartItem->quantity = $singleCartItem['product_quantity'] + 1;
+      $singleCartItem = $cartItem->updateQuantity();
       $actualOperationType = 'updated';
     }
 
@@ -53,13 +52,13 @@ switch ($reqData['type']) {
       exit();
     }
 
-    $cart->id = $singleCartItem['id'];
-    if ($singleCartItem['quantity'] > 1) {
-      $cart->quantity = $singleCartItem['quantity'] - 1;
-      $singleCartItem = $cart->updateQuantity();
+    $cartItem->id = $singleCartItem['cart_item_id'];
+    if ($singleCartItem['product_quantity'] > 1) {
+      $cartItem->quantity = $singleCartItem['product_quantity'] - 1;
+      $singleCartItem = $cartItem->updateQuantity();
       $actualOperationType = 'updated';
     } else {
-      $singleCartItem = $cart->delete();
+      $singleCartItem = $cartItem->delete();
       $actualOperationType = 'deleted';
     }
 

@@ -1,10 +1,10 @@
 <?php
 namespace App\models;
 
-class Cart
+class CartItem
 {
   private $conn;
-  private $tableName = 'cart';
+  private $tableName = 'cart_items';
 
   public $id;
   public $userId;
@@ -20,7 +20,7 @@ class Cart
 
   public function read()
   {
-    $query = "SELECT `c`.`id`, `c`.`product_id`, `p`.`name`, `p`.`price`, `p`.`image`, `c`.`quantity` FROM `$this->tableName` `c` JOIN `products` `p` ON `c`.`product_id` = `p`.`id` WHERE `c`.`user_id` = :userId ORDER BY `c`.`updated_at` DESC;";
+    $query = "SELECT `c`.`id` AS `cart_item_id`, `c`.`product_id`, `p`.`name` AS `product_name`, `p`.`price` AS `product_price`, `p`.`image` AS `product_image`, `c`.`quantity` AS `product_quantity` FROM `$this->tableName` `c` JOIN `products` `p` ON `c`.`product_id` = `p`.`id` WHERE `c`.`user_id` = :userId ORDER BY `c`.`updated_at` DESC;";
 
     $stmt = $this->conn->prepare($query);
 
@@ -33,7 +33,7 @@ class Cart
 
   public function readById()
   {
-    $query = "SELECT `c`.`id`, `c`.`product_id`, `p`.`name`, `p`.`price`, `p`.`image`, `c`.`quantity` FROM `$this->tableName` `c` JOIN `products` `p` ON `c`.`product_id` = `p`.`id` WHERE `c`.`id` = :id;";
+    $query = "SELECT `c`.`id` AS `cart_item_id`, `c`.`product_id`, `p`.`name` AS `product_name`, `p`.`price` AS `product_price`, `p`.`image` AS `product_image`, `c`.`quantity` AS `product_quantity` FROM `$this->tableName` `c` JOIN `products` `p` ON `c`.`product_id` = `p`.`id` WHERE `c`.`id` = :id;";
 
     $stmt = $this->conn->prepare($query);
 
@@ -46,7 +46,7 @@ class Cart
 
   public function readByUserAndProduct()
   {
-    $query = "SELECT `id`, `user_id`, `product_id`, `quantity` FROM `$this->tableName` WHERE `user_id` = :userId AND `product_id` = :productId;";
+    $query = "SELECT `c`.`id` AS `cart_item_id`, `c`.`product_id`, `p`.`name` AS `product_name`, `p`.`price` AS `product_price`, `p`.`image` AS `product_image`, `c`.`quantity` AS `product_quantity` FROM `$this->tableName` `c` JOIN `products` `p` ON `c`.`product_id` = `p`.`id` WHERE `c`.`user_id` = :userId AND `c`.`product_id` = :productId;";
 
     $stmt = $this->conn->prepare($query);
 
@@ -60,6 +60,7 @@ class Cart
 
   public function create()
   {
+    $this->quantity = 1;
     $this->createdAt = date('Y-m-d H:i:s');
     $this->updatedAt = date('Y-m-d H:i:s');
 

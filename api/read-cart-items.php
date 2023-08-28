@@ -11,24 +11,21 @@ $dotenv->safeLoad();
 use App\Config\Config;
 use App\Config\Database;
 use App\Models\User;
-use App\Models\Product;
-use App\Models\Cart;
+use App\Models\CartItem;
 
 Config::init();
 $database = new Database();
 $db = $database->connect();
 
 $user = new User($db);
-$product = new Product($db);
-$cart = new Cart($db);
+$cartItem = new CartItem($db);
 
-$reqData = json_decode(file_get_contents('php://input'), true);
 require __DIR__ . '/validations/is-logged-in.validation.php';
-require __DIR__ . '/validations/delete-single-cart-product.validation.php';
+require __DIR__ . '/validations/read-cart-items.validation.php';
 
-$cart->id = $singleCartItem['id'];
-$singleCartItem = $cart->delete();
+$cartItem->userId = $user->id;
+$allCartItems = $cartItem->read();
 
 http_response_code(200);
-echo json_encode($singleCartItem);
+echo json_encode($allCartItems);
 ?>

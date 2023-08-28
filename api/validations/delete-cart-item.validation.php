@@ -32,9 +32,9 @@ if (!$singleProduct) {
   exit();
 }
 
-$cart->productId = $reqData['productId'];
-$cart->userId = $user->id;
-$singleCartItem = $cart->readByUserAndProduct();
+$cartItem->productId = $reqData['productId'];
+$cartItem->userId = $user->id;
+$singleCartItem = $cartItem->readByUserAndProduct();
 
 if (!$singleCartItem) {
   http_response_code(404);
