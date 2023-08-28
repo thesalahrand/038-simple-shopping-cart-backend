@@ -19,7 +19,7 @@ Accept: application/json
 Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
 
 {
-  "productId": "12"
+  "productId": "13"
 }
 
 ### 04. Delete Wishlist Item
@@ -32,18 +32,8 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V
   "productId": "13"
 }
 
-### 03. Toggle from Wishlist
-POST {{$dotenv ROOT_DIR}}/api/toggle-from-wishlist.php HTTP/1.1
-Content-Type: application/json
-Accept: application/json
-Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
-
-{
-  "productId": "12"
-}
-
-### 04. Read all Wishlist Products
-GET {{$dotenv ROOT_DIR}}/api/read-all-wishlist-products.php HTTP/1.1
+### 05. Read all Wishlist Items
+GET {{$dotenv ROOT_DIR}}/api/read-wishlist-items.php HTTP/1.1
 Accept: application/json
 Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.0rMXTFSE9Tyuvr1V04LKZn-kTMpHMfg6RfHRzcj5IrE
 

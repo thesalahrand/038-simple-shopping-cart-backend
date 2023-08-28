@@ -11,21 +11,21 @@ $dotenv->safeLoad();
 use App\Config\Config;
 use App\Config\Database;
 use App\Models\User;
-use App\Models\Wishlist;
+use App\Models\WishlistItem;
 
 Config::init();
 $database = new Database();
 $db = $database->connect();
 
 $user = new User($db);
-$wishlist = new Wishlist($db);
+$wishlistItem = new WishlistItem($db);
 
 require __DIR__ . '/validations/is-logged-in.validation.php';
 require __DIR__ . '/validations/read-all-wishlist-products.validation.php';
 
-$wishlist->userId = $user->id;
-$allProducts = $wishlist->read();
+$wishlistItem->userId = $user->id;
+$allWishlistItems = $wishlistItem->read();
 
 http_response_code(200);
-echo json_encode($allProducts);
+echo json_encode($allWishlistItems);
 ?>
